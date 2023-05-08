@@ -1,0 +1,12 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.popular-h1 {
+    color: #1e1e1e;
+    text-align: left;
+    margin-top: 7rem;
+    font-family: 'Poppins', sans-serif;
+}

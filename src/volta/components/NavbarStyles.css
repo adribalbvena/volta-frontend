@@ -1,0 +1,82 @@
+nav{
+    padding: 4rem;
+}
+
+
+.nav-items{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #1e1e1e;
+    background-color: #ffff;
+    gap: 3rem;
+    height: 7rem; 
+}
+
+.logo{
+    font-size: 3rem;
+    color: #1cad9a;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.nav-items ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.mytrips, .signup, .login{
+    text-decoration: none;
+    color: #1e1e1e;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 10px 20px;
+    justify-items: center;
+    font-style: normal;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+}
+
+.mytrips{
+    margin-right: 2rem;
+    white-space: nowrap;
+
+}
+
+.i-flight{
+    margin-right: 0.3rem;
+}
+
+.signup{
+    border: 1px solid #1e1e1e;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+.login{
+    background-color: #1e1e1e;
+    border-radius: 5px;
+    color: white;
+    white-space: nowrap;
+
+}
+
+.mytrips:hover {
+    color:#1cad9a;
+}
+
+.signup:hover {
+    border: 1px solid #1cad9a;
+    color:#1cad9a;
+    transition: all 0.2s ease-in-out;
+}
+
+.login:hover {
+    background-color: #1cad9a;
+    color: white;
+    transition: all 0.2s ease-in-out;
+}

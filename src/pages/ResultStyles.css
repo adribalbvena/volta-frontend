@@ -1,0 +1,22 @@
+/*body{
+    background-color: rgb(242, 244, 244);
+}
+
+nav{
+    width: 100%;
+    box-shadow: 0px 6px 12px -7px rgba(133,133,133,0.56);
+    -webkit-box-shadow: 0px 6px 12px -7px rgba(133,133,133,0.56);
+    -moz-box-shadow: 0px 6px 12px -7px rgba(133,133,133,0.56);
+}*/
+
+.activities-row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.activities-title{
+    margin-top: 2rem;
+    color: #1e1e1e;
+    font-family: 'Poppins', sans-serif;
+}

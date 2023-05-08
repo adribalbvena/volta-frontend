@@ -1,0 +1,31 @@
+.activity-container{
+    width: 400px;
+    padding: 2rem;
+    border-radius: 12px;
+    background-color: #ffff;
+    font-family: 'Manrope';
+    margin-top: 2rem;
+    margin-right: 1.5rem;
+    color: #1e1e1e;
+    box-shadow: 0px 6px 12px -7px rgba(133,133,133,0.56);
+    -webkit-box-shadow: 0px 6px 12px -7px rgba(133,133,133,0.56);
+    -moz-box-shadow: 0px 6px 12px -7px rgba(133,133,133,0.56);
+  }
+
+.activity-list{
+    margin-top: 1rem;
+}
+
+.i-check{
+    color: #1cad9a;
+    margin-right: 0.5rem;
+}
+
+.i-bookmark{
+    color: #1cad9a;
+    font-size: 35px;
+}
+
+h2 {
+    text-align: center;
+}

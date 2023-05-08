@@ -1,0 +1,32 @@
+.card-container{
+  display: flex;
+  border-radius: 12px;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: -1;
+}
+
+
+.card-img {
+  border-radius: 12px;
+  width: 300px;
+  height: clamp(200px, 70vh, 450px);
+  object-fit: cover;
+  display: block;
+}
+
+
+
+.card-title {
+  color: white;
+  font-family: 'Poppins';
+  font-size: 1.5rem;
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+}
+
+
+

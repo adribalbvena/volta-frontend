@@ -1,0 +1,10 @@
+.activities-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.activities-title{
+    margin-top: 2rem;
+    color: #1e1e1e;
+    font-family: 'Poppins', sans-serif;
+}

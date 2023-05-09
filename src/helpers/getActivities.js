@@ -2,11 +2,13 @@ import { differenceInDays } from 'date-fns'
 
 export const getActivities = async(destination, startDate, endDate) => {
     const diff = differenceInDays(endDate, startDate)
-    const url = `https://ai-trip-planner.p.rapidapi.com/?days=${diff}&destination=${destination}`;
+    const days = diff + 1
+    const api_key = process.env.REACT_APP_RECOMMENDATIONS_KEY
+    const url = `https://ai-trip-planner.p.rapidapi.com/?days=${days}&destination=${destination}`;
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '4e5c5cb8d8msh9d1b9beebcf6c74p129864jsn70b0455404fb',
+            'X-RapidAPI-Key': api_key,
             'X-RapidAPI-Host': 'ai-trip-planner.p.rapidapi.com'
         }
     };

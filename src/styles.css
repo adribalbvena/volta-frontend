@@ -8,8 +8,24 @@
 
 
 body{
-    margin-left: clamp(1rem, 10vw, 4rem);
-    margin-right: clamp(1rem, 10vw, 4rem);
     background-color: #ffff;
 
+}
+
+.home-page, .results-page, .mytrips-page, .notfound-page {
+    margin-left: clamp(1rem, 10vw, 4rem);
+    margin-right: clamp(1rem, 10vw, 4rem);
+}
+
+.results-page {
+    background-color: #d7d7d7;
+}
+
+.login-page, .register-page {
+    background-color: #1cad9a;
+}
+
+.notfound-page {
+    font-family: 'Poppins';
+    color: #1e1e1e;
 }

@@ -1,28 +1,29 @@
-import React, { useState } from "react";
-import { useAuth } from "../helpers/auth";
-import './LoginStyles.css'
-
-export const Login = () => {
+import { useState } from 'react';
+import { useAuth } from '../../helpers/auth';
+import './LayoutStyle.css'
+export const Register = () => {
   const auth = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (event) => {
+  const handleRegister = (event) => {
     event.preventDefault();
-    auth.login(email, password);
+    auth.register(email, password);
     if (auth.errorMsg) {
       setEmail("");
       setPassword("");
     }
-  };
+  }
+
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <h2 className="login-title">Login</h2>
-        <form onSubmit={handleLogin}>
+    <div className="register-page">
+    <div className="layout-container">
+      <div className="layout-card">
+        <h2 className="layout-title">Sign Up</h2>
+        <form onSubmit={handleRegister}>
           <div className="input-container">
-          <label>Email</label>
+            <label>Email</label>
             <input
               type="email"
               value={email}
@@ -30,19 +31,24 @@ export const Login = () => {
             />
           </div>
           <div className="input-container">
-          <label>Password</label>
+            <label>Password</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            /> 
+            />
           </div>
-          {auth.errorMsg && <div className="error-div">Error: {auth.errorMsg} !!!</div>}
+          {auth.errorMsg && (
+            <div className="error-div">Error: {auth.errorMsg} !!!</div>
+          )}
           <div className="submit-btn-container">
-            <button className="submit-btn" type="submit">Login</button>
+            <button className="submit-btn" type="submit">
+              SignUp
+            </button>
           </div>
         </form>
       </div>
     </div>
-  );
-};
+  </div>
+  )
+}

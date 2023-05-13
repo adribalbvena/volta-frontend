@@ -34,10 +34,41 @@ export const AuthProvider = ({ children }) => {
         setErrorMsg(error.message);
       });
   };
+
+  const register = (email, password) => {
+    const url = `${baseURL}/register`;
+    const options = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    };
+  
+    fetch(url, options)
+      .then(response => {
+        if (response.status === 409) {
+          throw new Error('User already registered');
+        } else if (response.status === 200) {
+          return response.json();
+        }
+      })
+      .then(data => {
+        setUserId(data.id);
+        navigate('/', { replace: true });
+      })
+      .catch(error => {
+        setErrorMsg(error.message);
+      });
+  };
   
   const logout = () => {
     const url = `${baseURL}/logout`
-    fetch(url)
+    const options = {
+      mode: 'cors',
+      credentials: 'include',
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    };
+    fetch(url, options)
       .then(response => response.json())
       .then(() => {
         setUserId(null);
@@ -46,7 +77,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ userId, login, logout, errorMsg }}>
+    <AuthContext.Provider value={{ userId, login, register, logout, errorMsg }}>
       {children}
     </AuthContext.Provider>
   );

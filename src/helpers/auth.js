@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
       })
       .then(data => {
         setUserId(data.id);
-        navigate('/');
+        navigate('/', { replace: true });
       })
       .catch(error => {
         setErrorMsg(error.message);

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import { ActivitiesGrid } from "../volta/components/ActivitiesGrid";
+import { ActivitiesGrid } from "../components/ActivitiesGrid";
+import { Navbar } from "../components/Navbar";
 
 
 export const Results = () => {
@@ -13,7 +14,10 @@ export const Results = () => {
 
   return (
     <>
-        <ActivitiesGrid destination={destination} startDate={startDate} endDate={endDate}/>
+      <Navbar />
+      <div className="results-page">
+          <ActivitiesGrid destination={destination} startDate={startDate} endDate={endDate}/>
+      </div>
     </>
   );
 };

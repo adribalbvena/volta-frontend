@@ -1,20 +1,21 @@
 import { Route, Routes } from "react-router-dom"
-import { Home } from '../pages/Home'
-import { Mytrips } from '../pages/Mytrips'
-import { Navbar } from "../volta/components/Navbar"
-import { Results } from "../pages/Results"
-import { NotFound } from "../pages/NotFound"
 import { AuthProvider } from "../helpers/auth"
-import { Login } from "../pages/Login"
+import { Login } from "../auth/pages/Login"
+import { Register } from "../auth/pages/Register"
+import { Home } from "../volta/pages/Home"
+import { Results } from "../volta/pages/Results"
+import { NotFound } from "../volta/pages/NotFound"
+import { Mytrips } from "../volta/pages/Mytrips"
+
 
 
 export const AppRouter = () => {
   return (
     <>
       <AuthProvider >
-        <Navbar />
         <Routes>
             <Route path="/" element={<Home /> } />
+            <Route path="register" element={<Register /> } />
             <Route path="login" element={<Login />}/>
             <Route path="mytrips" element={<Mytrips />}/>
             <Route path="results" element={<Results />}/>

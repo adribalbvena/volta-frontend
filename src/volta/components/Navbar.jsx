@@ -3,13 +3,22 @@ import "./NavbarStyles.css";
 import { MdAirplanemodeActive } from "react-icons/md";
 import { useAuth } from "../../helpers/auth";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 export const Navbar = () => {
   const auth = useAuth();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     auth.logout()
   }
+
+  useEffect(() => {
+    if (auth.userId === null) {
+      navigate('/', { replace: true });
+    }
+  }, [auth.userId]);
 
   return (
     <nav className="nav-items">

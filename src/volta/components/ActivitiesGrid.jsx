@@ -1,4 +1,4 @@
-import { getActivities } from '../../helpers/getActivities';
+import { getActivities } from '../../helpers/APIrequests';
 import './ActivitiesGridStyles.css'
 import { ActivityCard } from './ActivityCard';
 import { useState, useEffect } from "react";

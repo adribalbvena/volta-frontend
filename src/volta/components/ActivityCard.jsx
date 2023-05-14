@@ -1,11 +1,15 @@
+import { useAuth } from "../../helpers/auth";
 import "./ActivityCardStyles.css";
 import { MdCheckBox, MdBookmark, MdBookmarkBorder } from 'react-icons/md'
 
 export const ActivityCard = ({ day, activities }) => {
+  const auth = useAuth()
   return (
     <>
       <div className="activity-container">
-        <MdBookmarkBorder className="i-bookmark"/>
+        {auth.userId && (
+          <MdBookmarkBorder className="i-bookmark"/>
+        )}
         <h2 className="activity-day">Day {day}</h2>
         <ul className="activity-list">
           {activities.map(({ time, description }) => (

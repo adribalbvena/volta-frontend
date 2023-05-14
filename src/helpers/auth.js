@@ -9,6 +9,15 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate()
   const baseURL = 'http://127.0.0.1:8080'
 
+//  useEffect(() => {
+//    const url = `${baseURL}/@current_user`;
+//   fetch(url)
+//      .then(response => response.json())
+//      .then(data => {
+//        setUserId(data.id);
+//      })
+//      .catch(error => console.log(error));
+//  }, []);
 
   const login = (email, password) => {
     const url = `${baseURL}/login`;

@@ -12,6 +12,10 @@ body{
 
 }
 
+h1 {
+    font-family: 'Poppins', sans-serif;
+}
+
 .home-page, .results-page, .mytrips-page, .notfound-page {
     margin-left: clamp(1rem, 10vw, 4rem);
     margin-right: clamp(1rem, 10vw, 4rem);

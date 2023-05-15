@@ -1,3 +1,4 @@
+import { MyTripsTable } from "../components/MyTripsTable"
 import { Navbar } from "../components/Navbar"
 
 export const Mytrips = () => {
@@ -5,7 +6,7 @@ export const Mytrips = () => {
     <>
       <Navbar />
       <div className="mytrips-page">
-         <h2>Mytrips</h2>
+         <MyTripsTable />
       </div>
     </>
   )

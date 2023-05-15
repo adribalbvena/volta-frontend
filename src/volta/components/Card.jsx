@@ -5,7 +5,7 @@ export const Card = ({title, url}) => {
     <>
         <div className='card-container'>
             <div className='card-content'>
-              <img className='card-img' alt={title} src={url}/>
+              <img className='animate__animated animate__fadeIn card-img' alt={title} src={url}/>
               <h3 className='card-title'>{title}</h3>
             </div>
         </div>

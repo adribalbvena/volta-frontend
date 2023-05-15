@@ -6,7 +6,7 @@ export const ActivityCard = ({ day, activities }) => {
   const auth = useAuth()
   return (
     <>
-      <div className="activity-container">
+      <div className="animate__animated animate__fadeIn activity-container">
         {auth.userId && (
           <MdBookmarkBorder className="i-bookmark"/>
         )}

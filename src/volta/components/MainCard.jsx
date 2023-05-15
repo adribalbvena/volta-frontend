@@ -28,7 +28,7 @@ export const MainCard = () => {
 
   return (
     <div className="card">
-      <img alt="travelImg" src={flight} className="big-img" />
+      <img alt="travelImg" src={flight} className="animate__animated animate__fadeIn big-img" />
       <div className="card-text">
         <h1>Our life is just a volta</h1>
       </div>

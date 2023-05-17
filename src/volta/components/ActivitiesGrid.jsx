@@ -29,7 +29,7 @@ export const ActivitiesGrid = ({destination, startDate, endDate}) => {
       <h1 className="activities-title">Activities in {destination}</h1>
       <div className="activities-row">
         {activities.map((activities) => (
-          <ActivityCard key={activities.day} {...activities} />
+          <ActivityCard destination={destination} startDate={startDate} endDate={endDate} key={activities.day} {...activities} />
         ))}
       </div>
     </>

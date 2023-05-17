@@ -55,3 +55,85 @@ export const getTrips = async () => {
     throw error;
   }
 };
+
+export const addTrip = async (destination, start_date, end_date) => {
+  const url = `${baseURL}/users/trips`;
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "http://localhost:3000",
+      "Access-Control-Allow-Credentials": "true",
+    },
+    body: JSON.stringify({ destination, start_date, end_date }),
+    credentials: "include",
+  };
+  try {
+    const response = await fetch(url, options);
+    if (response.ok) {
+      const trip = await response.json();
+      return trip;
+    } else {
+      const error = await response.json();
+      throw new Error(error.message);
+    }
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+export const deleteTrip = async (tripId) => {
+  const url = `${baseURL}/user/trips/${tripId}`;
+  const options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "http://localhost:3000",
+      "Access-Control-Allow-Credentials": "true",
+    },
+    credentials: "include"
+  };
+
+  try {
+    const response = await fetch(url, options);
+    if (response.ok) {
+      const result = await response.json();
+      return result;
+    } else {
+      const error = await response.json();
+      throw new Error(error.message);
+    }
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+export const addPlan = async (tripId, planData) => {
+  const url = `${baseURL}/trips/${tripId}/plans`;
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "http://localhost:3000",
+      "Access-Control-Allow-Credentials": "true",
+    },
+    body: JSON.stringify(planData),
+    credentials: "include"
+  };
+
+  try {
+    const response = await fetch(url, options);
+    if (response.ok) {
+      const responseData = await response.json();
+      console.log("Plan added successfully:", responseData);
+      return responseData;
+    } else {
+      throw new Error("Failed to add plan");
+    }
+  } catch (error) {
+    console.error("Failed to add plan:", error);
+    throw error;
+  }
+};

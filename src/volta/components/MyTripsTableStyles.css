@@ -39,3 +39,19 @@ th {
     background: #188c7c;
     cursor: pointer;
 }
+
+.delete-trip-btn{
+    background-color: #ffff;
+    border-radius: 5px;
+    margin-left: 20px;
+    padding: 10px;
+    border: 1px solid red;
+    color: red;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+}
+
+.delete-trip-btn:hover {
+    background-color: rgb(255, 213, 213);
+    cursor: pointer;
+}

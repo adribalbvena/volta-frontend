@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getTrips } from "../../helpers/APIrequests"
+import { deleteTrip, getTrips } from "../../helpers/APIrequests"
 import './MyTripsTableStyles.css'
 
 
@@ -16,6 +16,11 @@ export const MyTripsTable = () => {
 
   }, [])
 
+  const handleOnDelete = async(tripId) => {
+    await deleteTrip(tripId)
+    getMyTrips()
+  }
+
   return (
     <>
       <h1>My Trips</h1>
@@ -27,7 +32,6 @@ export const MyTripsTable = () => {
               <th>Destination</th>
               <th>Start Date</th>
               <th>End Date</th>
-              <th>Saved Activities</th>
               <th></th>
             </tr>
           </thead>
@@ -39,7 +43,9 @@ export const MyTripsTable = () => {
                 <td className="trip-row">{trip.end_date}</td> 
                 <td className="trip-row">
                   <button className="saved-trip-btn">See Activities</button>
-{/*                  <button className="delete-trip-btn">Delete</button> */}               
+                  <button 
+                    className="delete-trip-btn"
+                    onClick={() => handleOnDelete(trip.id)}>Delete</button>              
                 </td>
               </tr>
             ))}

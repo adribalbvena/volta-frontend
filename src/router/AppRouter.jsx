@@ -6,6 +6,7 @@ import { Home } from "../volta/pages/Home"
 import { Results } from "../volta/pages/Results"
 import { NotFound } from "../volta/pages/NotFound"
 import { Mytrips } from "../volta/pages/Mytrips"
+import { SavedActivitiesGrid } from "../volta/components/SavedActivitiesGrid"
 
 
 
@@ -19,6 +20,7 @@ export const AppRouter = () => {
             <Route path="login" element={<Login />}/>
             <Route path="mytrips" element={<Mytrips />}/>
             <Route path="results" element={<Results />}/>
+            <Route path="savedActivities" element={<SavedActivitiesGrid />}/>
             <Route path='*' element={<NotFound/>}/>
         </Routes>
       </AuthProvider>

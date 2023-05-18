@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { deleteTrip, getTrips } from "../../helpers/APIrequests"
+import { useNavigate } from 'react-router-dom'
 import './MyTripsTableStyles.css'
 
 
 export const MyTripsTable = () => {
   const [trips, setTrips] = useState([]);
+  const navigate = useNavigate();
 
   const getMyTrips = async () => {
     const newTrips = await getTrips();
@@ -19,6 +21,11 @@ export const MyTripsTable = () => {
   const handleOnDelete = async(tripId) => {
     await deleteTrip(tripId)
     getMyTrips()
+  }
+  
+  const handleSeeActivities = (tripId, destination) => {
+    navigate('/savedActivities', { state: {tripId, destination} })
+
   }
 
   return (
@@ -42,7 +49,7 @@ export const MyTripsTable = () => {
                 <td className="trip-row">{trip.start_date}</td>
                 <td className="trip-row">{trip.end_date}</td> 
                 <td className="trip-row">
-                  <button className="saved-trip-btn">See Activities</button>
+                  <button className="saved-trip-btn" onClick={() => handleSeeActivities(trip.id, trip.destination)}>See Activities</button>
                   <button 
                     className="delete-trip-btn"
                     onClick={() => handleOnDelete(trip.id)}>Delete</button>              

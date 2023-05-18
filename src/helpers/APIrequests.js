@@ -137,3 +137,34 @@ export const addPlan = async (tripId, planData) => {
     throw error;
   }
 };
+
+export const getPlanFromDb = async(tripId) => {
+  const url = `${baseURL}/trips/${tripId}/plan`;
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "http://localhost:3000",
+      "Access-Control-Allow-Credentials": "true",
+    },
+    credentials: "include"
+  };
+  try {
+    const resp = await fetch(url, options);
+    const { plan } = await resp.json();
+    const activities = plan.map((day) => ({
+      day: day.day,
+      activities: day.activities.map((activity) => ({
+        time: activity.time,
+        description: activity.description,
+      })),
+    }));
+  
+    return activities;
+
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+
+}

@@ -152,9 +152,10 @@ export const getPlanFromDb = async(tripId) => {
   try {
     const resp = await fetch(url, options);
     const { plan } = await resp.json();
-    const activities = plan.map((day) => ({
-      day: day.day,
-      activities: day.activities.map((activity) => ({
+    const activities = plan.map((plan) => ({
+      id: plan.id,
+      day: plan.day,
+      activities: plan.activities.map((activity) => ({
         time: activity.time,
         description: activity.description,
       })),
@@ -167,4 +168,31 @@ export const getPlanFromDb = async(tripId) => {
     throw error;
   }
 
+}
+
+export const deletePlan = async (tripId, planId) => {
+  const url = `${baseURL}/trips/${tripId}/plans/${planId}`;
+  const options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "http://localhost:3000",
+      "Access-Control-Allow-Credentials": "true",
+    },
+    credentials: "include"
+  };
+
+  try {
+    const response = await fetch(url, options);
+    if (response.ok) {
+      const result = await response.json();
+      return result;
+    } else {
+      const error = await response.json();
+      throw new Error(error.message);
+    }
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 }

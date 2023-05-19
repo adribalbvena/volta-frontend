@@ -1,4 +1,4 @@
-import { addPlan } from "../../helpers/APIrequests";
+import { addPlan, deletePlan } from "../../helpers/APIrequests";
 import { useAuth } from "../../helpers/auth";
 import "./ActivityCardStyles.css";
 import { MdCheckBox, MdBookmark, MdBookmarkBorder } from 'react-icons/md'
@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 export const ActivityCard = ({tripId, day, activities }) => {
   const auth = useAuth()
-  const [isSaved, setIsSaved] = useState(false)
+  const [isMarked, setIsMarked] = useState(false)
 
   const handleOnSave = async() => {
     if (tripId != null) {
@@ -16,8 +16,10 @@ export const ActivityCard = ({tripId, day, activities }) => {
       };
   
       try {
-        await addPlan(tripId, planData);
-        setIsSaved(true); 
+        if (!isMarked) {
+          await addPlan(tripId, planData); 
+          setIsMarked(true);
+        }
       } catch (error) {
         console.error(error);
       }
@@ -25,8 +27,8 @@ export const ActivityCard = ({tripId, day, activities }) => {
     }
 
     const getButtonIcon = () => {
-      if (isSaved) {
-        return <MdBookmark className="i-bookmark" />;
+      if (isMarked) {
+        return null
       } else {
         return <MdBookmarkBorder className="i-bookmark" />;
       }

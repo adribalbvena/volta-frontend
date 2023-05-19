@@ -4,6 +4,7 @@ import { getPlanFromDb } from "../../helpers/APIrequests";
 import { ActivityCard } from "./ActivityCard";
 import "./ActivitiesGridStyles.css";
 import { Navbar } from "./Navbar";
+import { SavedActivitiesCard } from "./SavedActivitiesCard";
 
 export const SavedActivitiesGrid = () => {
   const location = useLocation();
@@ -27,7 +28,8 @@ export const SavedActivitiesGrid = () => {
         <h1 className="activities-title">Saved Activities in {destination}</h1>
         <div className="activities-row">
           {activities.map((activities) => (
-            <ActivityCard
+            <SavedActivitiesCard
+              planId={activities.id}
               tripId={tripId}
               key={activities.day}
               {...activities}

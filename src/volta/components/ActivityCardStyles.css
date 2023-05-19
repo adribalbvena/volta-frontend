@@ -26,6 +26,16 @@
     font-size: 35px;
 }
 
+.i-delete{
+    color: red;
+    font-size: 35px;
+}
+
+.i-delete:hover {
+    border-radius: 5px;
+    background-color: rgb(255, 213, 213);
+}
+
 .activity-day {
     text-align: center;
 }

@@ -10,7 +10,6 @@ export const ActivitiesGrid = ({destination, startDate, endDate}) => {
   const [activities, setActivities] = useState([]);
   const [tripId, setTripId] = useState(null)
 
-  //const [destinations, setDestinations] = useState([]);
 
   const getPlan = async () => {
     const newActivities = await getActivities(destination, startDate, endDate);
@@ -23,11 +22,6 @@ export const ActivitiesGrid = ({destination, startDate, endDate}) => {
     }
   };
 
-  //  const getDestinations = async() => {
-  //    const newDestinations = await getPlaces(destination)
-  //    setDestinations(newDestinations)
-  //  }
-
   useEffect(() => {
     getPlan()
 
@@ -38,7 +32,10 @@ export const ActivitiesGrid = ({destination, startDate, endDate}) => {
       <h1 className="activities-title">Activities in {destination}</h1>
       <div className="activities-row">
         {activities.map((activities) => (
-          <ActivityCard tripId = {tripId} key={activities.day} {...activities} />
+          <ActivityCard 
+            tripId = {tripId} 
+            key={activities.day} 
+            {...activities} />
         ))}
       </div>
     </>

@@ -39,8 +39,8 @@
     flex-wrap: wrap;
     align-items: center;
     position: absolute;
-    justify-content: space-around;
-    width: clamp(60%, 70vw, 90%);
+    justify-content: center;
+    width: clamp(60%, 60vw, 90%);
     padding: 1rem;
     height: 18%;
     top: 100%;
@@ -93,6 +93,7 @@
 }*/
 
 .btn-arrow{
+    margin-left: 2rem;
     display: flex;
     padding: 10px;
     border: none;

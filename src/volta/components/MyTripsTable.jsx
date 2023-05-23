@@ -2,15 +2,21 @@ import { useEffect, useState } from "react";
 import { deleteTrip, getTrips } from "../../helpers/APIrequests"
 import { useNavigate } from 'react-router-dom'
 import './MyTripsTableStyles.css'
+import { ErrorCard } from "./ErrorCard";
 
 
 export const MyTripsTable = () => {
   const [trips, setTrips] = useState([]);
   const navigate = useNavigate();
+  const [errorMsg, setErrorMsg] = useState(null)
 
   const getMyTrips = async () => {
-    const newTrips = await getTrips();
-    setTrips(newTrips);
+    try {
+      const newTrips = await getTrips();
+      setTrips(newTrips);
+    } catch (error) {
+      setErrorMsg(error.message)
+    }
   };
 
   useEffect(() => {
@@ -31,7 +37,9 @@ export const MyTripsTable = () => {
   return (
     <>
       <h1>My Trips</h1>
-      {/*here put a conditional to check if there are trips and if arent, show 'you dont have trips already..' */}
+      {errorMsg && (
+        <ErrorCard errorMsg={errorMsg}/>
+      )}
       <div className="trips-container">
         <table className="animate__animated animate__fadeInLeft trips-table">
           <thead className="table-head-trips">

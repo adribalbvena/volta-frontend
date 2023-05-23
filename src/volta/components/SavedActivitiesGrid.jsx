@@ -1,20 +1,25 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { getPlanFromDb } from "../../helpers/APIrequests";
-import { ActivityCard } from "./ActivityCard";
 import "./ActivitiesGridStyles.css";
 import { Navbar } from "./Navbar";
 import { SavedActivitiesCard } from "./SavedActivitiesCard";
+import { ErrorCard } from "./ErrorCard";
 
 export const SavedActivitiesGrid = () => {
   const location = useLocation();
   const [tripId] = useState(location.state.tripId);
   const [destination] = useState(location.state.destination);
   const [activities, setActivities] = useState([]);
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const getPlanDb = async () => {
-    const savedActivities = await getPlanFromDb(tripId);
-    setActivities(savedActivities);
+    try {
+      const savedActivities = await getPlanFromDb(tripId);
+      setActivities(savedActivities);
+    } catch (error) {
+      setErrorMsg(error.message);
+    }
   };
 
   useEffect(() => {
@@ -26,6 +31,7 @@ export const SavedActivitiesGrid = () => {
       <Navbar />
       <div className="saved-activities-page">
         <h1 className="activities-title">Saved Activities in {destination}</h1>
+        {errorMsg && <ErrorCard errorMsg={errorMsg} />}
         <div className="activities-row">
           {activities.map((activities) => (
             <SavedActivitiesCard

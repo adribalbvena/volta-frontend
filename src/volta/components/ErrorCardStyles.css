@@ -1,0 +1,10 @@
+.error {
+    margin-top: 1rem;
+    border: 1px solid red;
+    border-radius: 5px;
+    color: red;
+    background-color: rgb(255, 213, 213);
+    text-align: center;
+    padding: 1rem;
+    font-family: 'Manrope';
+}

@@ -7,9 +7,11 @@ import 'react-date-range/dist/styles.css' // main css file
 import 'react-date-range/dist/theme/default.css' // theme css file
 import { format } from 'date-fns'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from "../../helpers/auth"
 
 
 export const MainCard = () => {
+  const auth = useAuth()
   const [destination, setDestination] = useState('')
   const [openDate, setOpenDate] = useState(false)
   const [date, setDate] = useState([
@@ -32,35 +34,37 @@ export const MainCard = () => {
       <div className="card-text">
         <h1>Our life is just a volta</h1>
       </div>
-      <div className="inner-card">
-        <div className="search-item">
-          <input
-            type="text"
-            placeholder="Where are you going?"
-            className="search-input"
-            onChange={e => setDestination(e.target.value)}
-          />
-        </div>
-        <div className="search-item">
-          <AiOutlineCalendar className="i-calendar"/>
-          <span 
-            onClick={()=>setOpenDate(!openDate)} 
-            className="search-text">{`${format(date[0].startDate, 'dd/MM/yyyy')} - ${format(date[0].endDate, 'dd/MM/yyyy')}`}
-          </span>
-          {openDate && <DateRange
-            editableDateInputs={true}
-            onChange={(item) => setDate([item.selection])}
-            moveRangeOnFirstSelection={false}
-            ranges={date}
-            className="daterange"
-          />}
-        </div>
-        <div className="search-item">
-          <button className="btn-arrow" onClick={handleSearch}>
-            <AiOutlineArrowRight className="i-arrow" />
-          </button>
-        </div>
-      </div>
+      {auth.userId && (
+              <div className="inner-card">
+              <div className="search-item">
+                <input
+                  type="text"
+                  placeholder="Where are you going?"
+                  className="search-input"
+                  onChange={e => setDestination(e.target.value)}
+                />
+              </div>
+              <div className="search-item">
+                <AiOutlineCalendar className="i-calendar"/>
+                <span 
+                  onClick={()=>setOpenDate(!openDate)} 
+                  className="search-text">{`${format(date[0].startDate, 'dd/MM/yyyy')} - ${format(date[0].endDate, 'dd/MM/yyyy')}`}
+                </span>
+                {openDate && <DateRange
+                  editableDateInputs={true}
+                  onChange={(item) => setDate([item.selection])}
+                  moveRangeOnFirstSelection={false}
+                  ranges={date}
+                  className="daterange"
+                />}
+              </div>
+              <div className="search-item">
+                <button className="btn-arrow" onClick={handleSearch}>
+                  <AiOutlineArrowRight className="i-arrow" />
+                </button>
+              </div>
+            </div>
+      )}
     </div>
   );
 };

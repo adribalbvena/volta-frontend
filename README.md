@@ -1,4 +1,4 @@
-##  Set up volta API:
+##  Set up Volta app:
 After setting the backend:
 ### Prerequisites
 Before you begin, ensure that you have the following installed on your machine:
